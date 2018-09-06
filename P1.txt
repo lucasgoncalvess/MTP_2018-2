@@ -1,4 +1,4 @@
-//Lucas Gonçalves e Silva
+//Lucas GonÃ§alves e Silva
 //11811EAU016
 
 #include <stdio.h>
