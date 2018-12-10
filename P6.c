@@ -1,31 +1,43 @@
 //Lucas Gonçalves e Silva 
 //11811EAU016
 
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
 
-#define pi 3.14159265359
-#define r 1
-
-typedef struct {
-  float x, y;
+typedef struct{
+	float x, y;
 }Ponto;
 
-int main(){
-   int N, i;
-   Ponto *xy;
-   printf("Digite um numero N de pontos: ");
-   scanf("%i", &N);
-   getchar();
-   xy= (Ponto *) malloc(N*sizeof(Ponto)); 
-   printf("\n");
-   for(i=0; i<N; i++){
-     xy->x= r*cos(i*2.0*pi/(N-1));
-     xy->y= r*sin(i*2.0*pi/(N-1));
-     printf("(%.3f, %.3f) ", xy->x, xy->y);
-   }
-   printf("\ ");
-   free(xy);
-   return 0;
+Ponto * gera(int N)
+{
+	Ponto * p = (Ponto *) calloc(N, sizeof(Ponto));
+	int i;
+	for(i = 0; i < N; i++)
+	{
+		p[i].x = cos(i * 2.0 * M_PI / (N - 1));
+		p[i].y = sin(i * 2.0 * M_PI / (N - 1));
+	}
+	return p;
+}
+
+void mostrar_pontos(Ponto * p_inicial, Ponto * p_final)
+{
+	if(p_inicial < p_final)
+	{
+		printf("(%.3lf, %.3lf)", p_inicial -> x, p_inicial -> y);
+		mostrar_pontos(p_inicial + 1, p_final);
+	}
+}
+
+int main()
+{
+	unsigned int N;
+	Ponto * p;
+	printf("Quantos pontos deseja? ");
+	scanf("%u", &N);	getchar();
+	p = gera(N);
+	mostrar_pontos(p, p + N);
+	free(p);
 }
