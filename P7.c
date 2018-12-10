@@ -1,6 +1,7 @@
-/*P7.c*/
-/*Wander Victor Verçosa Mares*/
-/*11811EAU010*/
+//Lucas GonÃ§alves e Silva 
+//11811EAU016
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -62,7 +63,7 @@ int main(){
         coordenadas = le_pontos("pontos.dat", &N);
         mostrar_pontos(coordenadas, coordenadas + N);
     } else {
-        printf("Digite o número de pontos: ");
+        printf("Digite o nÃºmero de pontos: ");
 		scanf("%u", &N); getchar();
         coordenadas = gerar_pontos(N);
         grava_pontos(coordenadas, N);
